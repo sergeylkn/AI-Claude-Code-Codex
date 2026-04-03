@@ -1,35 +1,27 @@
-import { AppShell } from "@/components/layout/app-shell";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <AppShell>
-      <div className="mx-auto max-w-4xl space-y-4">
-        <p className="inline-flex rounded-full border border-zinc-700 px-3 py-1 text-xs text-zinc-300">PHASE 1 COMPLETE</p>
-        <h1 className="text-3xl font-bold">Local-First AI Learning Platform</h1>
-        <p className="text-zinc-300">
-          Browser-first web foundation is ready: Next.js + TypeScript + Tailwind + responsive sidebar/main layout.
-        </p>
-
-        <section className="grid gap-4 md:grid-cols-3">
-          <div className="card">
-            <h3 className="mb-2 font-semibold">Frontend</h3>
-            <p className="text-sm text-zinc-400">Next.js App Router + TypeScript for scalable feature modules.</p>
-          </div>
-          <div className="card">
-            <h3 className="mb-2 font-semibold">Styling</h3>
-            <p className="text-sm text-zinc-400">Tailwind CSS utility system with reusable card/button/input classes.</p>
-          </div>
-          <div className="card">
-            <h3 className="mb-2 font-semibold">Layout</h3>
-            <p className="text-sm text-zinc-400">Sidebar navigation + primary content viewport optimized for future phases.</p>
-          </div>
-        </section>
-
-        <div className="card border-indigo-800/60 bg-indigo-950/20">
-          <h2 className="mb-2 font-semibold text-indigo-300">Next Step</h2>
-          <p className="text-sm text-zinc-300">Phase 2: local JSON course system with lesson navigation and content renderer.</p>
-        </div>
+    <main className="mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-6 text-center">
+      <p className="mb-3 rounded-full border border-zinc-800 px-3 py-1 text-xs text-zinc-300">AI Learning SaaS</p>
+      <h1 className="mb-4 text-4xl font-bold">Master Claude Code & AI Product Development</h1>
+      <p className="mb-8 max-w-2xl text-zinc-300">
+        Structured courses, coding tasks, AI feedback, and a project generator that turns ideas into production-ready
+        foundations.
+      </p>
+      <div className="flex gap-3">
+        <Link href="/dashboard" className="button">
+          Start Learning (Guest)
+        </Link>
+        <Link href="/auth/register" className="rounded-lg border border-zinc-700 px-4 py-2 text-sm hover:bg-zinc-800">
+          Create Account
+        <Link href="/auth/register" className="button">
+          Get Started
+        </Link>
+        <Link href="/auth/login" className="rounded-lg border border-zinc-700 px-4 py-2 text-sm hover:bg-zinc-800">
+          Login
+        </Link>
       </div>
-    </AppShell>
+    </main>
   );
 }
