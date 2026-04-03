@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "claude-code-foundations",
+    "title": "Claude Code Foundations",
+    "description": "Learn core prompting, debugging, and automation workflows.",
+    "modules": [
+      {
+        "title": "Prompting Essentials",
+        "lessons": [
+          {
+            "title": "Structured Prompting",
+            "theory": "# Structured Prompting\nUse role, context, constraints, output format.",
+            "example": "Ask Claude for JSON output with validation constraints.",
+            "task": "Write a prompt that requests a REST endpoint plan in JSON."
+          },
+          {
+            "title": "Debugging with AI",
+            "theory": "# Debugging\nProvide stack trace + code + expected behavior.",
+            "example": "Paste failing function and ask for root cause analysis.",
+            "task": "Debug a function that returns duplicated records."
+          }
+        ]
+      }
+    ]
+  }
+]
