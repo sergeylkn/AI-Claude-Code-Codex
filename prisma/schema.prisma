@@ -1,0 +1,96 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum ChatRole {
+  USER
+  ASSISTANT
+}
+
+model User {
+  id                String             @id @default(cuid())
+  email             String             @unique
+  passwordHash      String
+  role              Role               @default(USER)
+  progresses        Progress[]
+  chats             ChatHistory[]
+  generatedProjects GeneratedProject[]
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+}
+
+model Course {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  description String
+  modules     Module[]
+  createdAt   DateTime @default(now())
+}
+
+model Module {
+  id        String   @id @default(cuid())
+  title     String
+  position  Int
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  courseId  String
+  lessons   Lesson[]
+  createdAt DateTime @default(now())
+}
+
+model Lesson {
+  id         String        @id @default(cuid())
+  title      String
+  theory     String
+  example    String
+  task       String
+  position   Int
+  module     Module        @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  moduleId   String
+  progresses Progress[]
+  chats      ChatHistory[]
+  createdAt  DateTime      @default(now())
+}
+
+model Progress {
+  id          String    @id @default(cuid())
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  lesson      Lesson    @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  lessonId    String
+  completed   Boolean   @default(false)
+  completedAt DateTime?
+  createdAt   DateTime  @default(now())
+
+  @@unique([userId, lessonId])
+}
+
+model ChatHistory {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  lesson    Lesson?  @relation(fields: [lessonId], references: [id], onDelete: SetNull)
+  lessonId  String?
+  role      ChatRole
+  content   String
+  createdAt DateTime @default(now())
+}
+
+model GeneratedProject {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  prompt    String
+  output    String
+  createdAt DateTime @default(now())
+}
