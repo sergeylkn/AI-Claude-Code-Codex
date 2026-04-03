@@ -13,24 +13,5 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: ai_learning_web
-    restart: unless-stopped
-    ports:
-      - "3000:3000"
-    environment:
-      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/ai_learning
-      JWT_SECRET: replace-with-a-long-random-secret
-      ANTHROPIC_API_KEY: ""
-      APP_URL: http://localhost:3000
-    depends_on:
-      - postgres
-    volumes:
-      - .:/app
-      - /app/node_modules
-
 volumes:
   postgres_data:

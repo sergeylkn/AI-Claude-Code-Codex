@@ -9,6 +9,9 @@ export async function POST(req: NextRequest) {
   const key = session?.userId ?? req.headers.get("x-forwarded-for") ?? "guest";
 
   const limiter = rateLimit(`chat:${key}`, 30, 60_000);
+  if (!session) return json({ error: "Unauthorized" }, 401);
+
+  const limiter = rateLimit(`chat:${session.userId}`, 30, 60_000);
   if (!limiter.allowed) {
     return json({ error: "Rate limited", retryAfterMs: limiter.retryAfterMs }, 429);
   }
@@ -17,6 +20,8 @@ export async function POST(req: NextRequest) {
     const { message, lessonId } = await req.json();
     const response = await createChatResponse(session?.userId ?? null, lessonId ?? null, message);
     return json({ response, mode: session ? "authenticated" : "guest" });
+    const response = await createChatResponse(session.userId, lessonId ?? null, message);
+    return json({ response });
   } catch (error) {
     return json({ error: getErrorMessage(error) }, 400);
   }
