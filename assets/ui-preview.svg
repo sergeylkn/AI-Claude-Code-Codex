@@ -1,0 +1,48 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#09090b"/>
+      <stop offset="100%" stop-color="#18181b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="900" fill="url(#bg)"/>
+
+  <rect x="30" y="30" width="280" height="840" rx="16" fill="#111827" stroke="#27272a"/>
+  <text x="60" y="80" fill="#e4e4e7" font-family="Inter,Arial" font-size="26" font-weight="700">AI Learning</text>
+  <rect x="50" y="120" width="240" height="44" rx="10" fill="#4f46e5"/>
+  <text x="70" y="148" fill="white" font-family="Inter,Arial" font-size="16">Dashboard</text>
+  <rect x="50" y="176" width="240" height="44" rx="10" fill="#18181b" stroke="#3f3f46"/>
+  <text x="70" y="204" fill="#d4d4d8" font-family="Inter,Arial" font-size="16">Project Generator</text>
+  <rect x="50" y="232" width="240" height="44" rx="10" fill="#18181b" stroke="#3f3f46"/>
+  <text x="70" y="260" fill="#d4d4d8" font-family="Inter,Arial" font-size="16">Courses</text>
+
+  <text x="350" y="75" fill="#f4f4f5" font-family="Inter,Arial" font-size="34" font-weight="700">Lesson Workspace</text>
+  <text x="350" y="110" fill="#a1a1aa" font-family="Inter,Arial" font-size="18">Notion + ChatGPT style learning interface</text>
+
+  <rect x="350" y="140" width="520" height="730" rx="16" fill="#111827" stroke="#27272a"/>
+  <text x="380" y="185" fill="#e4e4e7" font-family="Inter,Arial" font-size="24" font-weight="600">Structured Prompting</text>
+  <rect x="380" y="210" width="460" height="120" rx="10" fill="#18181b"/>
+  <text x="395" y="240" fill="#d4d4d8" font-family="Inter,Arial" font-size="15">Theory: role + context + constraints + output format</text>
+  <text x="395" y="268" fill="#d4d4d8" font-family="Inter,Arial" font-size="15">Example: return strict JSON for API plan</text>
+  <rect x="380" y="350" width="460" height="90" rx="10" fill="#312e81" opacity="0.45"/>
+  <text x="395" y="400" fill="#ddd6fe" font-family="Inter,Arial" font-size="16">Task: Build a prompt for SaaS API scaffolding</text>
+
+  <rect x="900" y="140" width="470" height="350" rx="16" fill="#111827" stroke="#27272a"/>
+  <text x="930" y="185" fill="#e4e4e7" font-family="Inter,Arial" font-size="22" font-weight="600">AI Assistant (Claude)</text>
+  <rect x="930" y="205" width="410" height="210" rx="10" fill="#18181b"/>
+  <text x="945" y="235" fill="#fafafa" font-family="Inter,Arial" font-size="14">USER: Why my prompt returns invalid JSON?</text>
+  <text x="945" y="265" fill="#a5b4fc" font-family="Inter,Arial" font-size="14">ASSISTANT: Add explicit JSON schema and no prose...</text>
+  <rect x="930" y="430" width="300" height="36" rx="8" fill="#09090b" stroke="#3f3f46"/>
+  <text x="945" y="453" fill="#71717a" font-family="Inter,Arial" font-size="13">Ask Claude about this lesson...</text>
+  <rect x="1240" y="430" width="100" height="36" rx="8" fill="#4f46e5"/>
+  <text x="1270" y="453" fill="white" font-family="Inter,Arial" font-size="13">Send</text>
+
+  <rect x="900" y="520" width="470" height="350" rx="16" fill="#111827" stroke="#27272a"/>
+  <text x="930" y="565" fill="#e4e4e7" font-family="Inter,Arial" font-size="22" font-weight="600">Code Practice (Monaco)</text>
+  <rect x="930" y="585" width="410" height="190" rx="10" fill="#0b1220"/>
+  <text x="950" y="620" fill="#c4b5fd" font-family="monospace" font-size="14">function solution() {</text>
+  <text x="970" y="646" fill="#e4e4e7" font-family="monospace" font-size="14">return 'hello';</text>
+  <text x="950" y="672" fill="#c4b5fd" font-family="monospace" font-size="14">}</text>
+  <rect x="1180" y="790" width="160" height="36" rx="8" fill="#4f46e5"/>
+  <text x="1200" y="813" fill="white" font-family="Inter,Arial" font-size="13">Review with AI</text>
+</svg>
