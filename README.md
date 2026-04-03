@@ -70,6 +70,16 @@ APP_URL="http://localhost:3000"
 
 > Если `ANTHROPIC_API_KEY` пустой, AI-эндпоинты вернут понятный fallback-ответ с инструкцией по настройке ключа.
 
+
+## Гостевой режим (без регистрации)
+- Курсы и уроки доступны сразу, аккаунт не обязателен.
+- AI чат / review / project generator работают и для гостя (история не сохраняется в БД).
+- Прогресс уроков (`complete lesson`) сохраняется только для авторизованного пользователя.
+
+## Работа без `ANTHROPIC_API_KEY`
+Если в `.env` указано `ANTHROPIC_API_KEY=""`, платформа не падает.
+AI-эндпоинты вернут fallback-ответ с инструкцией добавить ключ.
+
 ## Основные API
 - `POST /api/auth/register`
 - `POST /api/auth/login`
@@ -142,3 +152,7 @@ npm run build
 pm2 start npm --name ai-learning -- start
 pm2 save
 ```
+
+## Визуальный превью интерфейса
+
+![UI Preview](assets/ui-preview.svg)

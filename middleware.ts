@@ -1,3 +1,7 @@
+import { NextResponse } from "next/server";
+
+// Guest mode enabled: courses and lesson workspace are available without registration.
+export function middleware() {
 import { NextRequest, NextResponse } from "next/server";
 
 const protectedPaths = ["/dashboard", "/courses", "/lessons", "/projects"];
@@ -15,5 +19,6 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
+  matcher: []
   matcher: ["/dashboard/:path*", "/courses/:path*", "/lessons/:path*", "/projects/:path*"]
 };

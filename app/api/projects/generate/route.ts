@@ -6,6 +6,9 @@ import { rateLimit } from "@/lib/rate-limit";
 
 export async function POST(req: NextRequest) {
   const session = await getSessionFromRequest(req);
+  const key = session?.userId ?? req.headers.get("x-forwarded-for") ?? "guest";
+
+  const limiter = rateLimit(`project:${key}`, 5, 60_000);
   if (!session) return json({ error: "Unauthorized" }, 401);
 
   const limiter = rateLimit(`project:${session.userId}`, 5, 60_000);
@@ -13,6 +16,8 @@ export async function POST(req: NextRequest) {
 
   try {
     const { idea } = await req.json();
+    const result = await generateProject(idea, session?.userId ?? null);
+    return json({ result, mode: session ? "authenticated" : "guest" });
     const result = await generateProject(idea, session.userId);
     return json({ result });
   } catch (error) {

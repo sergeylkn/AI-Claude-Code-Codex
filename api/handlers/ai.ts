@@ -1,12 +1,32 @@
 import { prisma } from "@/db/prisma";
 import { runAgent, type AgentTask } from "@/ai/orchestration/agent";
 
+export async function createChatResponse(userId: string | null, lessonId: string | null, message: string) {
 export async function createChatResponse(userId: string, lessonId: string | null, message: string) {
   const result = await runAgent({
     task: "explain_lesson",
     context: { message, lessonId }
   });
 
+  if (userId) {
+    await prisma.chatHistory.create({
+      data: {
+        userId,
+        lessonId,
+        role: "USER",
+        content: message
+      }
+    });
+
+    await prisma.chatHistory.create({
+      data: {
+        userId,
+        lessonId,
+        role: "ASSISTANT",
+        content: JSON.stringify(result)
+      }
+    });
+  }
   await prisma.chatHistory.create({
     data: {
       userId,
@@ -35,12 +55,22 @@ export async function reviewCode(code: string, taskContext: string) {
   });
 }
 
+export async function generateProject(idea: string, userId: string | null) {
 export async function generateProject(idea: string, userId: string) {
   const result = await runAgent({
     task: "generate_project",
     context: { idea }
   });
 
+  if (userId) {
+    await prisma.generatedProject.create({
+      data: {
+        userId,
+        prompt: idea,
+        output: JSON.stringify(result)
+      }
+    });
+  }
   await prisma.generatedProject.create({
     data: {
       userId,
